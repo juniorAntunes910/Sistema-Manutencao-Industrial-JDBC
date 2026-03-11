@@ -121,8 +121,8 @@ public class Main {
         String nomePeca;
         double quantidade;
         ArrayList<String> listaNomes = PECA_DAO.listaNomes();
-        SC.nextLine();
         do{
+            SC.nextLine();
             System.out.println("Nome peça: ");
             nomePeca = SC.nextLine();
             System.out.println("Quantidade peça (Valida >= 0): ");

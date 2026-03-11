@@ -44,4 +44,15 @@ public class MaquinaDAO {
         }
         return null;
     }
+
+    public ArrayList<Maquina> retornaMaquinaOperacao(){
+        try (Connection conn = ConectionDB.Conectar()){
+            PreparedStatement stmt = conn.prepareStatement("""
+             SELECT id, nome, setor, status FROM maquina
+        """);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
