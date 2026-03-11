@@ -4,6 +4,7 @@ import org.example.DAO.MaquinaDAO;
 import org.example.DAO.TecnicoDAO;
 import org.example.DTO.MaquinaDTO;
 import org.example.Entity.Maquina;
+import org.example.Entity.Tecnicos;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -65,38 +66,41 @@ public class Main {
         SC.nextLine();
         ArrayList<MaquinaDTO> listaNomesMaquinas = MAQUINA_DAO.retornaMaquinaNome();
         if (listaNomesMaquinas == null) {
-            listaNomesMaquinas.add(new MaquinaDTO("NomeTesteNingueNuncaVaiUsarMetodoAlternativoNaoEGambiarra1"));
+            listaNomesMaquinas.add(new MaquinaDTO("NomeTesteNingueNuncaVaiUsarMetodoAlternativoNaoEGambiarra1", "SetorParaNaoNulo"));
         }
         do {
             System.out.println("Nome da Máquina: ");
             nomeMaquina = SC.nextLine();
-            MaquinaDTO nomeMaquinaRecord = new MaquinaDTO(nomeMaquina);
-            if(listaNomesMaquinas.contains(nomeMaquinaRecord)){
-                System.out.println("Máquina ja existe!");
-                return;
-            }
             System.out.println("Setor da Máquina: ");
             setorMaquina = SC.nextLine();
         }while(nomeMaquina.isBlank() || setorMaquina.isBlank());
         MAQUINA_DAO.cadastrarMaquina(new Maquina(nomeMaquina,
                 setorMaquina,
                 "OPERACIONAL"));
+        //Usei essa logica para tentar algo novo, sei que tem varios formas mais faceis de se fazer
     }
 
     private static void cadastrarTecnico() {
         String nome;
         String setor;
+        ArrayList<String> listaNomes = TECNICO_DAO.listaNomes();
         SC.nextLine();
         do{
             System.out.println("Nome do Tecnico: ");
             nome = SC.nextLine();
+            if(listaNomes.contains(nome)){
+                System.out.println("Nome ja existe!");
+                return;
+            }
             System.out.println("Nome do Setor: ");
             setor = SC.nextLine();
 
         }while (nome.isBlank() || setor.isBlank());
+        TECNICO_DAO.inserirTecnico(new Tecnicos(nome, setor));
     }
 
     private static void cadastrarPeca() {
+
     }
 
     private static void criarOrdemManutencao() {

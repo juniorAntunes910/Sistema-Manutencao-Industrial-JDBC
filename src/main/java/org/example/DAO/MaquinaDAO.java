@@ -35,7 +35,7 @@ public class MaquinaDAO {
             ArrayList<MaquinaDTO> listaMaquinaDTO = new ArrayList<>();
             while (rs.next()){
                 listaMaquinaDTO.add(new MaquinaDTO(
-                        rs.getString("nome")
+                        rs.getString("nome"), rs.getString("setor")
                 ));
             }
             return listaMaquinaDTO;

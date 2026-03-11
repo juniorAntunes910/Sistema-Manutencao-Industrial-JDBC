@@ -1,7 +1,8 @@
 package org.example.DTO;
 
 public record MaquinaDTO(
-  String nome
+  String nome,
+  String setor
 ){
 
     @Override

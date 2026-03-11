@@ -13,7 +13,7 @@ public class TecnicoDAO {
     public void inserirTecnico(Tecnicos tecnicos){
         try(Connection conn = ConectionDB.Conectar()){
             PreparedStatement stmt = conn.prepareStatement("""
-                    INSERT INTO tecnico nome,especialidade
+                    INSERT INTO tecnico (nome,especialidade)
                     VALUES (?,?) 
                     """);
             stmt.setString(1, tecnicos.getNome());
