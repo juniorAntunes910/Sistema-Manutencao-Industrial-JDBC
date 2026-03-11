@@ -1,9 +1,11 @@
 package org.example;
 
 import org.example.DAO.MaquinaDAO;
+import org.example.DAO.PecaDAO;
 import org.example.DAO.TecnicoDAO;
 import org.example.DTO.MaquinaDTO;
 import org.example.Entity.Maquina;
+import org.example.Entity.Pecas;
 import org.example.Entity.Tecnicos;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
     static final MaquinaDAO MAQUINA_DAO = new MaquinaDAO();
     static final TecnicoDAO TECNICO_DAO = new TecnicoDAO();
+    static final PecaDAO PECA_DAO = new PecaDAO();
     public static void main(String[] args) {
         menuInicio();
     }
@@ -106,11 +109,31 @@ public class Main {
             setor = SC.nextLine();
 
         }while (nome.isBlank() || setor.isBlank());
-        TECNICO_DAO.inserirTecnico(new Tecnicos(nome, setor));
+        TECNICO_DAO.inserirTecnico(
+                new Tecnicos(
+                        nome,
+                        setor
+                )
+        );
     }
 
     private static void cadastrarPeca() {
-
+        String nomePeca;
+        double quantidade;
+        ArrayList<String> listaNomes = PECA_DAO.listaNomes();
+        SC.nextLine();
+        do{
+            System.out.println("Nome peça: ");
+            nomePeca = SC.nextLine();
+            System.out.println("Quantidade peça (Valida >= 0): ");
+            quantidade = SC.nextDouble();
+        }while (nomePeca.isBlank() || quantidade < 0);
+        PECA_DAO.cadastrarPeca(
+                new Pecas(
+                        nomePeca,
+                        quantidade
+                )
+        );
     }
 
     private static void criarOrdemManutencao() {

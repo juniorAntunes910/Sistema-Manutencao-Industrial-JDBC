@@ -1,17 +1,17 @@
 package org.example.Entity;
 
-public class pecas {
+public class Pecas {
     private int id;
     private String nome;
     private double estoque;
 
-    public pecas(int id, String nome, double estoque) {
+    public Pecas(int id, String nome, double estoque) {
         this.id = id;
         this.nome = nome;
         this.estoque = estoque;
     }
 
-    public pecas(String nome, double estoque) {
+    public Pecas(String nome, double estoque) {
         this.nome = nome;
         this.estoque = estoque;
     }
