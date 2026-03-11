@@ -73,6 +73,16 @@ public class Main {
             nomeMaquina = SC.nextLine();
             System.out.println("Setor da Máquina: ");
             setorMaquina = SC.nextLine();
+            if(listaNomesMaquinas.contains(
+                    new MaquinaDTO(
+                            nomeMaquina,
+                            setorMaquina
+                            )
+                        )
+            ){
+                System.out.println("Maquina Ja existe!");
+                return;
+            }
         }while(nomeMaquina.isBlank() || setorMaquina.isBlank());
         MAQUINA_DAO.cadastrarMaquina(new Maquina(nomeMaquina,
                 setorMaquina,

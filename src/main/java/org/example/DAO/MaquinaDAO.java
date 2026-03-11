@@ -29,7 +29,7 @@ public class MaquinaDAO {
     public ArrayList<MaquinaDTO> retornaMaquinaNome(){
         try(Connection conn = ConectionDB.Conectar()){
             PreparedStatement stmt = conn.prepareStatement("""
-                    SELECT nome FROM maquina;
+                    SELECT nome, setor FROM maquina;
                     """);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MaquinaDTO> listaMaquinaDTO = new ArrayList<>();
